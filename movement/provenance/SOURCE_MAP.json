@@ -1,0 +1,41 @@
+{
+  "assembly": "Synthia-Movement-Layer-Assembly-v0.1.0",
+  "policy": "assembly-first; donor files preserved; new code only at boundaries",
+  "live_sources": [
+    {
+      "source": "Synthia-Autopoietic-Assembly-v0.1.0-FULL-R21.22-MORPH-GAME-1.zip",
+      "files": ["state-space/state-space-foundation.mjs", "state-space/real-gate-table.mjs"],
+      "role": "64 loci, local coordinate measurement, naming/dependency graph"
+    },
+    {
+      "source": "Synthia-v0.5.6-MOVEMENT-TEMPORAL-MESH-PATCH.zip",
+      "files": ["src/state-space/movement-transport-runtime.mjs"],
+      "role": "reversible Movement representation transport; boundary import adjusted only"
+    },
+    {
+      "source": "Synthia-Reciprocal-Life-v0.1.0.zip",
+      "files": ["src/synthia/life/primitiveTopology.mjs", "src/synthia/life/movementConstraints.mjs"],
+      "role": "four primary primitives, emergent Space, evidence-backed Movement rules"
+    },
+    {
+      "source": "Pure-Synthia-Swarm-Body-v0.3.0-PHYSIOLOGY.zip",
+      "files": ["src/synthia/ato-core/activation.mjs"],
+      "role": "existing bigram/trigram/hexagram activation vocabulary"
+    },
+    {
+      "source": "Synthia-Kimi-Focal-StateSpace-v1.4.0-mesh-execution.zip",
+      "files": ["docs/FRAGMENT_ALGEBRA_SPEC.md", "docs/corpus/pure-synthia-state-calculus-compendium.md"],
+      "role": "fragment taxonomy and Movement naming/vocabulary source material"
+    }
+  ],
+  "preserved_not_activated": [
+    {
+      "source": "Synthia-v0.5.5-RELATIONAL-ALGEBRA-PATCH.zip",
+      "reason": "relationship/interplay layer follows Movement substrate assembly"
+    },
+    {
+      "source": "axion-magnetic-resonance-master.zip",
+      "reason": "scientific calculation donor retained without invented Synthia mapping"
+    }
+  ]
+}
