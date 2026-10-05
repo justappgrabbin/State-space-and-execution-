@@ -63,6 +63,26 @@ export class MinimumArrivalSystem {
       condition => reduceConditionToPrimitives(this.stateSpace, condition)
     );
 
+    // Put one primitive from every dimensional model into explicit shared contact.
+    // This is an experimental relation in the existing ContentGraph, not a new
+    // linguistic schema or a prewritten arrived structure.
+    const representatives = primitiveGroups.map(group => group[0]);
+    const interplayRelations = representatives.map((from, index) => {
+      const to = representatives[(index + 1) % representatives.length];
+      const linked = this.stateSpace.linkContent(from.id, to.id, 'dimension-contact');
+      return Object.freeze({ from: from.id, to: to.id, relation: linked.relation });
+    });
+
+    const interplayEvent = this.stateSpace.recordEvent({
+      dimension: null,
+      scale: 'automaton',
+      source: 'minimum-arrival-experiment',
+      kind: 'swarm-interplay',
+      payload: { relations: interplayRelations },
+      evidence: { conditions: conditions.map(condition => condition.id) },
+      activation: 0.75,
+    });
+
     const automata = ARRIVAL_DIMENSIONS.map((dimension, index) =>
       makeAutomaton(dimension, conditions[index], primitiveGroups[index])
     );
@@ -87,6 +107,8 @@ export class MinimumArrivalSystem {
         arrivalId: arrival.id,
         operator: arrival.operator,
         swarmOperator: swarm.operator,
+        interplayEventId: interplayEvent.id,
+        interplayRelations,
         constituentAutomata: automata.map(automaton => automaton.id),
       },
       evidence: {
@@ -106,6 +128,8 @@ export class MinimumArrivalSystem {
       conditions,
       primitiveGroups,
       automata: Object.freeze(automata),
+      interplayRelations: Object.freeze(interplayRelations),
+      interplayEvent,
       swarm,
       arrival,
       arrivalEvent,
