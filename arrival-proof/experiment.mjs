@@ -34,6 +34,7 @@ try {
   }
 
   console.log('\nINTERPLAY');
+  check('✓', 'shared-state relations', `${result.interplayRelations.length} dimension contacts`);
   check('✓', 'shared swarm bundle', `${result.swarm.members.length} constituent Automata`);
 
   console.log('\nCOMPOSITION');
